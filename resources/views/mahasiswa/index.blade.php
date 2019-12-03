@@ -9,6 +9,9 @@
 	<div class="row">
 		<div class="col">
 			<h1>Daftar Mahasiswa</h1>
+
+
+
 			<table class="table">
 			  <thead class="thead-dark">
 			    <tr>

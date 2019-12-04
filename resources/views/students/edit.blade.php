@@ -1,19 +1,20 @@
 @extends('layout/main')
 
 
-@section('title', 'Form Tambah Data Mahasiswa')
+@section('title', 'Form Ubah Data Mahasiswa')
 
 @section('container')
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
-				<h2>Form Tambah Data Mahasiswa</h2>
+				<h2>Form Ubah Data Mahasiswa</h2>
 
-				<form method="POST" action="/students">
+				<form method="POST" action="/students/{{$student->id}}">
+					@method('patch')
 					@csrf <!-- menghindari  page expired, ini caranya laravel untuk menghindari hacking-->
 				  <div class="form-group">
 				    <label for="nama">Nama</label>
-				    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Masukkan Nama" name="nama" value="{{old('nama')}}">
+				    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" placeholder="Masukkan Nama" name="nama" value="{{$student->nama}}">
 				    @error('nama')
 				    	<div class="invalid-feedback">{{ $message }}</div>
 				    @enderror
@@ -21,7 +22,7 @@
 
 				  <div class="form-group">
 				    <label for="nrp">NRP</label>
-				    <input type="text" class="form-control @error('nrp') is-invalid @enderror" id="nrp" placeholder="Masukkan nrp" name="nrp" value="{{old('nrp')}}">
+				    <input type="text" class="form-control @error('nrp') is-invalid @enderror" id="nrp" placeholder="Masukkan nrp" name="nrp" value="{{$student->nrp}}">
 				    @error('nrp')
 				    	<div class="invalid-feedback">{{ $message }}</div>
 				    @enderror
@@ -29,7 +30,7 @@
 
 				  <div class="form-group">
 				    <label for="email">Email</label>
-				    <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Masukkan email" name="email" value="{{old('email')}}">
+				    <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Masukkan email" name="email" value="{{$student->email}}">
 				    @error('email')
 				    	<div class="invalid-feedback">{{ $message }}</div>
 				    @enderror
@@ -37,13 +38,13 @@
 
 				  <div class="form-group">
 				    <label for="jurusan">Jurusan</label>
-				    <input type="text" class="form-control @error('jurusan') is-invalid @enderror" id="jurusan" placeholder="Masukkan jurusan" name="jurusan" value="{{old('jurusan')}}">
+				    <input type="text" class="form-control @error('jurusan') is-invalid @enderror" id="jurusan" placeholder="Masukkan jurusan" name="jurusan" value="{{$student->jurusan}}">
 				    @error('jurusan')
 				    	<div class="invalid-feedback">{{ $message }}</div>
 				    @enderror
 				  </div>
 
-				  <button type="submit" class="btn btn-primary">Tambah Data!</button>
+				  <button type="submit" class="btn btn-primary">Ubah Data!</button>
 				</form>
 				
 			</div>
